@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Zooplanet.Models.Clase>
+@{
+    Layout = "Layout";
+}
+
+<main>
+
+    <h1>
+        Vertebrados según su clase
+    </h1>
+
+    @foreach (var clase in Model)
+    {
+        <div class="listaClases">
+
+            <table>
+                <tr>
+                    <th id="@clase.Nombre">
+                        @clase.Nombre
+                    </th>
+                    <td>
+                        <ul>
+                            @foreach (var c in clase.Especies)
+                            {
+                                <li>
+                                    <img src="~/especies/@(c.Id).jpg" />
+                                    <h2>@c.Especie</h2>
+                                    <p><label>Habitat: </label><a href="~/Segun-Su-Habitat#@c.Habitat.Replace(" ","-")">@c.Habitat</a></p>
+                                    <p><label>Peso: </label>@c.Peso</p>
+                                    <p><label>Tamaño: </label>@c.Tamaño</p>
+                                    <p>@c.Observaciones</p>
+                                </li>
+                            }
+
+                        </ul>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    }
+
+
+
+</main>
